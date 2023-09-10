@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g**(i8w7ag^k7aj844rqu_0=kx5rfsni6ul%$bh+l^f0b(vps^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['atamiur.pythonanywhere.com']
+ALLOWED_HOSTS = ['atamiur.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myPortfolio',
 ]
 
 MIDDLEWARE = [
