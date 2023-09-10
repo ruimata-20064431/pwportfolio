@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
+from myPortfolio import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('myPortfolio/', include('myPortfolio.urls')),
+    path('', include('myPortfolio.urls')),
+    
+
+    
+    #path('myPortfolio/', include('myPortfolio.urls')),
+    #path('', RedirectView.as_view(url='myPortfolio/')),
+    #path('/', include('myPortfolio.urls')),
+    
+    #path(r'^', include('myPortfolio.urls')),
+    #path(r'^some-page/$', RedirectView.as_view(url='/'))
 ]
