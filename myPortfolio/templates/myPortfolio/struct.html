@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,35 +11,52 @@
         <title>Rui Mata - a20064431 : Progrsamação Web - ULHT/LEI2023</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
         
-        <header>
-            <h1>Prog WEB</h1>
-        </header>
-        
-        <nav>
-            <div>
-                <a href="home">RUI MATA</a>
-            </div>
+        <link rel="stylesheet" href="{% static 'myPortfolio/css/myPortfolio.css' %}" type="text/css">
 
-            <div>
-                <a href="about">About me</a>
-                <a href="projects">Projects</a>
-                <a href="web">Web</a>
-                <a href="blog">Blog</a>
-                <a href="contacts">Contacts</a>
-                
-                
-            </div>
-        </nav>
+        <!-- awesome font includes font + icons -->
+        <link href="{% static 'myPortfolio/css/webfonts/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'myPortfolio/css/webfonts/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'myPortfolio/css/webfonts/solid.css' %}" rel="stylesheet" type="text/css">
+        
+    </head>
+
+    <body > <!-- class="hero-body"> <!-- inspiration on https://www.youtube.com/watch?v=FTNAAGYGO7I -->       
+        
+        <nav id="top-nav-bar" class="nav-bar top-nav">
+            <h1 class="logo"><a href="home">Rui Mata</a></h1>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="about">about</a></li>
+                <li class="nav-item"><a href="projects">projects</a></li>
+                <li class="nav-item"><a href="web">web</a></li>
+                <li class="nav-item"><a href="blog">blog</a></li>
+                <li class="nav-item"><a href="contacts">contacts</a></li>
+            </ul>
+        </nav> 
+        
+        <header class="hero-box">
+            <section class="hero-image-box">
+                <video class="hero-video" src="{% static 'myPortfolio/video/oceanloop.mp4' %}" autoplay muted
+                  loop></video>
+            </section>
+            
+            <!----
+            <section class="hero-image-box">
+                <img src="{% static 'myPortfolio/images/ocean_a.jpg' %}" alt="Image of the ocean" class="hero-img">
+            </section>
+            -->
+            
+            {% block navbar %}
+            {% endblock %}
+
+            <section class="hero-text-box">
+                <h1 class="hero-heading">The most worth-while thing is to try to put happiness into the lives of others.</h1>
+                <p class="hero-text">Robert Baden-Powell</p>
+                <p><button class="hero-button">View Portfolio</button></p>
+            </section> 
+        </header>
 
         <main>
-            <p>just some text<p>
             {% block content %}
             {% endblock content %}
             
@@ -48,7 +66,13 @@
         </aside>
         
         <footer>
-            <a href="">Contacts</a>
+            <section class="footer-social">
+                <a href="https://www.linkedin.com/in/ruimata/" arial-label="Link to linkedin">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/mata.rui/" arial-label="Link to instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i></a>
+            </section>
+            <p class="footer-copyright">ULHT - LEI &copy; 2023</p>
         </footer>
     </body>
 </html> 
