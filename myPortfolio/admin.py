@@ -10,6 +10,7 @@ from .models import Tecnologia
 from .models import Interesse
 from .models import Competencia
 
+
 # Register your models here.
 admin.site.register (Curso)
 admin.site.register (Instituicao)

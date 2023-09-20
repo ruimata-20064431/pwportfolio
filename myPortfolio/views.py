@@ -1,6 +1,8 @@
-
+from django.conf import settings as conf_settings
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Tecnologia
+from .models import Instituicao
 
 # Create your views here.
 #def index_view(request):
@@ -29,3 +31,18 @@ def blog_page_view(request):
 
 def contacts_page_view(request):
     return render(request, 'myPortfolio\contacts.html')
+
+
+
+# ----- consolidates education view ----- 
+
+## TODO
+def consolidated_education_page_view(request):
+    return render(request, 'myPortfolio/education.html')
+
+
+
+
+# --- utils --- 
+
+

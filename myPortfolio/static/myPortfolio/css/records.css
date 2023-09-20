@@ -118,7 +118,7 @@ video {
 /* Top Navbar Only Styles */
 
 .top-nav {
-  background: none;
+  background-color: #5E639E;
   /*position: fixed;*/
   top: 0;
 }
@@ -348,6 +348,7 @@ main div {
   display: flex;
   justify-content: center;
   padding-top: 3rem;
+  background-color: #777EC9;
 }
 .footer-copyright {
   text-align: center;

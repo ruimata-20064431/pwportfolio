@@ -13,8 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings as conf_settings
 from django.urls import path
-from . import views
+from . import views, dataforms
+
+
 
 urlpatterns = [
     # home page / Hero page views
@@ -27,5 +30,18 @@ urlpatterns = [
     path('web', views.web_page_view),
     path('blog', views.blog_page_view),
     path('contacts', views.contacts_page_view),
+
+    # data management views
+    path('competence', dataforms.competence_form_view),
+    path('course', dataforms.course_form_view),
+    path('discipline', dataforms.discipline_form_view),
+    path('institution', dataforms.institution_form_view),
+    path('interest', dataforms.interest_form_view),
+    path('person', dataforms.person_form_view),
+    path('project', dataforms.project_form_view),
+    path('technology', dataforms.technology_form_view),
     
+    # consolidated education view
+    path('education', views.consolidated_education_page_view, 
+        name=conf_settings.GLOBAL_SETTINGS['EDUCATION_PAGE']),
 ]

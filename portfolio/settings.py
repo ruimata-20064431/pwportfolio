@@ -133,3 +133,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/atamiur/portfolio/static'
 STATIC_URL = '/static/'
+
+
+
+
+# Custom global constants
+GLOBAL_SETTINGS = {
+    'EDUCATION_PAGE' : "education",
+}
+

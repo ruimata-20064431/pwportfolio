@@ -67,6 +67,7 @@ class Imagem(models.Model):
 class Projeto(models.Model):
     projectID = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     nome = models.CharField(max_length = 50)
+    descricao = models.CharField(max_length = 500, default = "")
     ano = models.IntegerField(validators = [ MinValueValidator(0, message="deve introduzin um valor maior do que 0")])
     cadeira = models.ForeignKey(Disciplina, on_delete=models.CASCADE, null = False)
     imagem = models.ForeignKey(Imagem, on_delete=models.CASCADE)
@@ -116,5 +117,3 @@ class Competencia(models.Model):
 
     def __str__(self):
         return self.nome #f"{self.nome} - {str(tipocompetencia)}"
-    
-
