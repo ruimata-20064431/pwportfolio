@@ -277,10 +277,10 @@ main div {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   align-self: center;
-  text-align: center;
+  /*text-align: center;*/
   padding: 1rem;
   z-index: 10;
-  color: coral;
+  /*color: coral;*/
 }
 
 /*
@@ -502,8 +502,8 @@ label {
 
 .data-container-box {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
@@ -526,7 +526,8 @@ label {
   margin: 10px;
   /*border-style: groove;*/
   /*box-shadow: 10px 5px 5px rgb(255, 255, 255);*/
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #5E639E;
 }
 
 
@@ -537,7 +538,12 @@ label {
   align-items: flex-start;
   text-align: left;
 }
-/*
+
+.item-box-title{
+  text-align: center;
+}
+
+
 .item-record{
   display: flex;
   flex-direction: row;
@@ -545,12 +551,11 @@ label {
   align-items: flex-start;
   text-align: left;
 }
-*/
-/*
+
+
 .item-record-attr{
   display: flex;
   font-family: monospace;
   font-size: 100%;
   text-transform: uppercase;
 }
-*/

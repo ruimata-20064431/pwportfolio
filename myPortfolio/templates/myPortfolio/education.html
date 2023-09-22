@@ -4,13 +4,6 @@
 {% load django_tables2 %} 
 
 {% block content %}
-
-    <!--
-    {% for filme in lista %}
-        <p> {{ filme.nome  }}</p> 
-    {% endfor   %}
-    -->
-
     <p class="content-title">{{ title }}</p>
 
     <div id="data-main" class="data-container-box">
@@ -24,7 +17,6 @@
             a
         </div>
         <div class="item-box">
-            
             <div class="item-record-container">
                 {% render_table cadeiras %}
             </div>

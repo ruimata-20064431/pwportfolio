@@ -47,6 +47,10 @@ class Disciplina(models.Model):
     professor = models.ManyToManyField(Pessoa, related_name='leciona')
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='cadeiras')
 
+    @property
+    def periodo(self):
+        return str(self.ano) + "/" + str(self.semestre)
+
     def __str__(self):
         return self.nome #+ ' | '  + curso.nome[:25]
 

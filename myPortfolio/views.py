@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django import template
 from .dataforms import *
 from .models import *
+from .tables import *
+
 #from .models import Instituicao
 
 register = template.Library() # https://stackoverflow.com/questions/56725158/display-a-fixed-length-subset-of-a-list-in-a-django-template
@@ -47,7 +49,7 @@ def consolidated_education_page_view(request):
     table = CursoTable(queryset)
 
     cadeiras = Disciplina.objects.all()
-    cadeiras_table = DisciplinasDoCursoTable(cadeiras)
+    cadeiras_table = DisciplinasTable(cadeiras)
 
     context = {
         'title': 'EDUCATION PAGE',
