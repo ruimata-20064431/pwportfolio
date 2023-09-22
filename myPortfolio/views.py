@@ -1,10 +1,14 @@
 from django.conf import settings as conf_settings
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Tecnologia
-from .models import Instituicao
+from django import template
+from .dataforms import *
+from .models import *
+#from .models import Instituicao
 
-# Create your views here.
+register = template.Library() # https://stackoverflow.com/questions/56725158/display-a-fixed-length-subset-of-a-list-in-a-django-template
+
+
 #def index_view(request):
 #    return HttpResponse('welcome to my portfolio')
 
@@ -38,11 +42,22 @@ def contacts_page_view(request):
 
 ## TODO
 def consolidated_education_page_view(request):
-    return render(request, 'myPortfolio/education.html')
+
+    queryset = Curso.objects.all()
+    table = CursoTable(queryset)
+
+    cadeiras = Disciplina.objects.all()
+    cadeiras_table = DisciplinasDoCursoTable(cadeiras)
+
+    context = {
+        'title': 'EDUCATION PAGE',
+        'table': table,
+        'cadeiras':cadeiras_table,
+    }
+
+    return render(request, 'myPortfolio/education.html', context)
 
 
 
 
 # --- utils --- 
-
-

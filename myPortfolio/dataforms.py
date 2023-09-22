@@ -1,7 +1,10 @@
 from django.shortcuts import render
+import django_tables2 as tables
 #from .forms import TechnologiesForm
 #from .forms import InstitutionForm
 from .forms import *
+from .views import *
+
 
 # ----- Data management forms ----- 
 def competence_form_view(request):
@@ -60,10 +63,49 @@ def technology_form_view(request):
     context = { 'form' : record, 'title' : 'Technology'}
     return render(request, 'myPortfolio/education/recordentry.html', context)
 
+
+# --- utils ---
+
+
+class CursoTable(tables.Table):
+    class Meta:
+        model = Curso
+        exclude = ("id", )
+
+
+
+class DisciplinasDoCursoTable(tables.Table):  
+    #class SpeechTable(tables.Table):
+    curso = tables.Column(accessor='curso.cursoID')
+    nome = tables.Column()
+    class Meta:
+                
+        attrs = {"course": "something"}
+
+    """
+    main_table = tables.Column(CursoTable(), verbose_name='Lista Cursos')
+
+    custom_data = tables.TemplateColumn(
+        '''
+        {% if record.name %}
+            Name: {{ record.name }}<br>
+        {% endif %}
+        {% if record.description %}
+            Description: {{ record.description }}<br>
+        {% endif %}
+        ''',
+        verbose_name='Custom Data1'
+    ) 
+    
+
+    class Meta:
+        model = YourModel
+
+
+    """
+
+
 """
-
-
-
 
 
 

@@ -492,65 +492,22 @@ label {
 
 
 /* --- data page styles --- */ 
-
-.content-title{
-  text-transform: uppercase;
-  color: #5E639E;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
 .data-container-box {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: space-around;
+  align-items: normal;
   align-content: stretch;
-  /*background-color: red;*/
-  padding: 16px;
+  background-color: red;
 }
 
 .item-box {
   display: block;
-  /*  
-  flex-grow: 2;
-  flex-shrink: 1; 
+  flex-grow: 1;
+  flex-shrink: 1;
   flex-basis: auto;
-  */
-  box-sizing: content-box;
-  width: inherit;
   align-self: stretch;
   order: 0;
-  /*background-color: black;*/
-  margin: 10px;
-  /*border-style: groove;*/
-  /*box-shadow: 10px 5px 5px rgb(255, 255, 255);*/
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+  background-color: black;
 }
-
-
-.item-record-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-}
-/*
-.item-record{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  text-align: left;
-}
-*/
-/*
-.item-record-attr{
-  display: flex;
-  font-family: monospace;
-  font-size: 100%;
-  text-transform: uppercase;
-}
-*/

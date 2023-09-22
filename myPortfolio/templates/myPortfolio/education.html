@@ -1,22 +1,38 @@
 {% extends 'myPortfolio/base.html' %}
 
+{% load custom_filters %}
+{% load django_tables2 %} 
+
 {% block content %}
 
     <!--
     {% for filme in lista %}
-        <p> {{ filme.nome  }}</p>
+        <p> {{ filme.nome  }}</p> 
     {% endfor   %}
     -->
 
+    <p class="content-title">{{ title }}</p>
 
-    <div id="data-content-box" class="data-main">
-        <div class="item-box">
-
+    <div id="data-main" class="data-container-box">
+        <div class="item-box ">
+            <div class="item-box-title">
+                <p>{{ title }}</p>
+            </div>
+            <div class="item-record-container">
+                {% render_table table %}
+            </div>
+            a
         </div>
         <div class="item-box">
-
+            
+            <div class="item-record-container">
+                {% render_table cadeiras %}
+            </div>
+            b
         </div>
-        <div class="item-split-box"></div>
+        <div class="item-box">
+            c
+        </div> 
     </div>
 
 {% endblock %} 
