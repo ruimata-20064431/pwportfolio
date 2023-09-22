@@ -45,19 +45,41 @@ def contacts_page_view(request):
 ## TODO
 def consolidated_education_page_view(request):
 
-    queryset = Curso.objects.all()
-    table = CursoTable(queryset)
+    cursos = Curso.objects.all()
+    cursos_table = CursoTable(cursos)
+    cursos_title = 'My Courses'
 
     cadeiras = Disciplina.objects.all()
     cadeiras_table = DisciplinasTable(cadeiras)
+    cadeiras_title = 'My Course Disciplines'
+    
+    projetos = Projeto.objects.all()
+    projetos_table = ProjetoTable(projetos)
+    projetos_title = 'My Discipline projects'
+
+    pessoas = Pessoa.objects.all()
+    pessoas_table = PessoaTable(pessoas)
+    pessoas_title = 'My Beloved Teachers'
+
+    record = CourseForm(request.POST or None)
+    if record.is_valid():
+        record.save()
+        
 
     context = {
         'title': 'EDUCATION PAGE',
-        'table': table,
+        'cursos_title': cursos_title,
+        'cursos': cursos_table,
+        'cadeiras_title': cadeiras_title,
         'cadeiras':cadeiras_table,
+        'projetos_title': projetos_title,
+        'projetos': projetos_table,
+        'pessoas_title': pessoas_title,
+        'pessoas': pessoas_table,
+        'form': record,
     }
 
-    return render(request, 'myPortfolio/education.html', context)
+    return render(request, 'myPortfolio/education/education.html', context)
 
 
 

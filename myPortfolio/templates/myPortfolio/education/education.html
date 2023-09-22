@@ -1,0 +1,73 @@
+{% extends 'myPortfolio/base.html' %}
+
+{% load custom_filters %}
+{% load django_tables2 %} 
+
+{% block content %}
+    <p class="content-title">{{ title }}</p>
+
+    <div id="data-main" class="data-container-box">
+        <div class="item-box">
+            <div class="item-box-title">
+                <p>{{ cursos_title }}</p>
+            </div>
+            <div class="item-record-container">
+                {% render_table cursos %}
+            </div>
+            <div class="item-record-actions">
+                <button class="btn create">Criar Curso</button>
+                <button class="btn delete">Eliminar</button>
+            </div>
+        </div>
+        <div class="item-box secret">
+            <div class="form-input-container1">
+                <h1>Enter a new {{ title }}</h1>
+                <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <input type="submit" valur="Save">
+            </form>
+            </div>
+        </div>
+        <div class="item-box">
+            <div class="item-box-title">
+                <p>{{ cadeiras_title }}</p>
+            </div>
+            <div class="item-record-container">
+                {% render_table cadeiras %}
+            </div>
+            
+            <div class="item-record-actions">
+                <button class="btn create">Criar Cadeira</button>
+                <button class="btn delete">Eliminar</button>
+            </div>
+        </div>
+        <div class="item-box">
+            <div class="item-box-title">
+                <p>{{ projetos_title }}</p>
+            </div> 
+            <div class="item-record-container">
+                {% render_table projetos %}
+            </div>
+            
+            <div class="item-record-actions">
+                <button class="btn create">Criar Projeto</button>
+                <button class="btn delete">Eliminar</button>
+            </div>
+        </div>
+        <div class="item-box">
+            <div class="item-box-title">
+                <p>{{ pessoas_title }}</p>
+            </div>
+            <div class="item-record-container">
+                {% render_table pessoas %}
+            </div>
+            
+            <div class="item-record-actions">
+                <button class="btn create">Adicionar Professor</button>
+                <button class="btn delete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 

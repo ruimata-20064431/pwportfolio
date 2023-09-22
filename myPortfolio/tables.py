@@ -8,7 +8,7 @@ import itertools
 class CursoTable(tables.Table):
     class Meta:
         model = Curso
-        fields = ['id', 'cursoID', 'curso', 'inicio']
+        fields = ['id', 'cursoID', 'curso', 'inicio', ] # 'instituicao',]
         exclude = ("id", "cursoID", )
 
 
@@ -22,3 +22,17 @@ class DisciplinasTable(tables.Table):
         exclude = ('id', 'disciplinaID', 'ano', 'semestre')
 
 
+class ProjetoTable(tables.Table):
+    class Meta:
+        model = Projeto
+        fields = {'id', 'projectID', 'nome', 'descricao', 'ano', 'cadeira', 'imagem'}
+        exclude = ('id', 'projectID', )
+        sequence = ('nome', 'ano', 'cadeira', 'descricao')
+        
+
+class PessoaTable(tables.Table):
+    class Meta: 
+        model = Pessoa
+        fields = {'id', 'pessoaID', 'nome', 'link',}
+        exclude = ('id', 'pessoaID',)
+        sequence = ('nome', 'link',)
