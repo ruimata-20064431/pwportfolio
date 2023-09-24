@@ -512,6 +512,8 @@ label {
   align-content: stretch;
   /*background-color: red;*/
   padding: 16px;
+  
+  min-width: 600px;
 }
 
 .item-box {
@@ -523,6 +525,8 @@ label {
   margin: 10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: #5E639E;
   position:relative;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 
@@ -634,4 +638,12 @@ label {
 .orderable a {
   padding: 0 10px 0 10px ;
   text-align: left;
+}
+
+
+tbody{
+  min-width: 300px;
+  max-height: 25vh;
+  overflow: scroll;
+  /* scroll-behavior: smooth;*/
 }
