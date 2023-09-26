@@ -5,12 +5,14 @@ const TABLES = {
     'My Beloved Teachers'       : ['Pessoa', 0]         ,
 }
 
-const TABLE_DEFS                = [[-1, -1], [5,[0, 0]], [2, [1,0]], [0, [1, 4]]];  // table relations info
+const TABLE_DEFS                = [[], [5,[0, 0]], [2, [1,0]], [0, [1, 4]]];  // table relations info
 const CLASS_BOX                 = 'item-box'            ;
 const CLASS_TITLE               = 'item-box-title-text' ;
 const TAG_TABLE                 = 'tbody'               ;
 const TAG_TABLE_ROW             = 'tr'                  ;
 const LEAD_TABLE                = 'My Courses'          ;
+const TEACHER_TABLE             = 'My Beloved Teachers' ;
+const TEACHER_TABLE_idx         = 3                     ;
 
 const TEXT_COLOR                = '#5E639E'             ;
 const TEXT_COLOR_SELECTED       = '#0014ff'             ;
@@ -64,15 +66,19 @@ class DataContainer {
         for (var i = 0; i < this.data.children.length; i++){
             this.data.children[i].style.display = TABLE_ROW_VISIBLE;
 
-            if (this.data.children[i].children[indexes[0]].innerHTML != filterString){
-                this.data.children[i].style.display = TABLE_ROW_INVISIBLE;
+            if (this.idx != TEACHER_TABLE_idx) {
+                if (this.data.children[i].children[indexes[0]].innerHTML != filterString  ){
+                    this.data.children[i].style.display = TABLE_ROW_INVISIBLE;
+                }
+            } else {
+                var newFilterString = filterString.split(',').map( (it) => it.trim() );
+                if (!newFilterString.includes( this.data.children[i].children[indexes[0]].innerHTML)){
+                    this.data.children[i].style.display = TABLE_ROW_INVISIBLE;
+                }
             }
         }
 
-        this.selected = this.isVisible(this.selected) ?
-            this.selected :
-            this.firstVisible();
-
+        this.selected = this.isVisible(this.selected) ? this.selected : this.firstVisible(); 
         this.markSelected();
     }
 
@@ -169,16 +175,8 @@ function clickLineEvent(e, title){
     var title = e.currentTarget.parentElement.parentElement.parentElement.
         parentElement.getElementsByClassName(CLASS_TITLE)[0].innerHTML;         // the identification of the data block clicked
     var pos = detIndex (e.target.parentElement);                                // determine clicked element's position in data table
-    //var table = new DataContainer(title, e.currentTarget, pos, 0);
     currTable.markSelected(pos);
-    //if (title == LEAD_TABLE){                                                   // limited to the main table for simplicity in use
-        cascadeFilter();                                                        // filter remainig
-    //}
-    
-    
-    
-    //table.markSelected(title, );
-    //filterTable(e, data, filterSting);
+    cascadeFilter();                                                            // filter remainig
 }
 
 
@@ -197,76 +195,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var data = box.getElementsByTagName(TAG_TABLE);                         // look for the data table
         if (data.length == 0) continue;
 
-        // var lines = data[0].getElementsByTagName(TAG_TABLE_ROW);                // get table rows
-
-        tables[i] = new DataContainer(title, data[0], i, FIRST_ELEMENT);           // array of table class objects
+        tables[i] = new DataContainer(title, data[0], i, FIRST_ELEMENT);        // array of table class objects
 
         data[0].addEventListener('click', (e) => {
             clickLineEvent(e , title);    
         });
-
-        /*
-        // go through table lines to set listeners
-        for ( var j = 0; j < lines.length; j++){
-            if (title[0].innerHTML != LEAD_TABLE){                              // Main table - never filter
-                // set record selection listener
-                
-                //lines[i].addEventListener('click', () => {
-                //    setLineSelected
-                //})
-            } else {
-                // set filtering listener
-                /*
-                lines[j].addEventListener('click', (e, table, j) => {               
-                    //console.log('taget: ', e.target);
-                    //console.log('taget: ', e.currentTarget);  //--> the line
-                    var filterSting = e.currentTarget.children[0].innerHTML;
-
-                    table.markSelected(j);
-
-                    filterTable(e, data, filterSting);
-                });
-                */
-               /*
-                lines[j].addEventListener('click', (e) => {
-                    var jj = j;
-                    clickLineEvent(e, table, jj);    
-                });
-            }
-        }
-        */
-
-
-
-
-
-
-/*
-        var filterString = data[0].children[0].innerHTML;
-
-        // set filtering listener
-        lines[i].addEventListener('click', 
-            (e, data, filterString,  pos = TABLES[title[0].innerHTML][1]) => { 
-                filterTable(data, filterString, pos);
-            });
-
-        
-        
-            // set listener (accountable for the filtering in other tables)
-
-    } 
-        /*else {
-            // set clicked line as "selected"
-            null;
-        }*/
-
-
-        
-
-        /*filterTable(data, 'Licenciatura em Engenharia Informática', TABLES[title[0].innerHTML][1]);*/
-
     }
-
 });
 
 
