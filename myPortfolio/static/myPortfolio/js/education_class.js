@@ -26,6 +26,11 @@ const ELEMENT_INVISIBLE_CLASS   = 'secret'              ;
 const TABLE_ROW_VISIBLE         = 'table-row'           ;
 const TABLE_ROW_INVISIBLE       = 'none'                ;
 
+const TABLE_COURSE              = 'Curso'               ;
+const TABLE_DISCIPLINE          = 'Cadeira'             ;
+const TABLE_PROJECT             = 'Projeto'             ;
+const TABLE_PERSON              = 'Pessoa'              ;
+
 const BTN_CREATE_CLASS          = 'btn_create'          ;
 const BTN_DELETE_CLASS          = 'btn_delete'          ;
 
@@ -201,9 +206,19 @@ function disableDataForm(dataForm){
     frmCourse.classList.add(ELEMENT_INVISIBLE_CLASS);
 }
 
-function deleteRow(e){
+function deleteRow(e, table, dbTable){
     // get the filterString
-    console.log();
+    console.log(table.selectedFilter());
+
+    $ajax({
+        type: "POST",
+        url: "{{ url 'delete_course/'}}",   
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+              text: "this is my test view"},   /* Passing the text data */
+        success:  function(response){
+               alert(response);
+           }
+    });
 }
 
 function buttonCreateEvent(e){
@@ -219,10 +234,10 @@ function buttonCreateEvent(e){
 function buttonDeleteEvent(e){
     // get the reference attribute from the selected record
     switch (e.target.id) {
-        case 'btnRmvCourse'     :   ; break ;
-        case 'btnRmvDiscipline' :   ; break ;
-        case 'btnRmvProject'    :   ; break ;
-        case 'btnRmvPerson'     :   ; break ;
+        case 'btnRmvCourse'     : deleteRow(e, tables[0], TABLE_COURSE)        ; break ;
+        case 'btnRmvDiscipline' : deleteRow(e, tables[1], TABLE_DISCIPLINE)    ; break ;
+        case 'btnRmvProject'    : deleteRow(e, tables[2], TABLE_PROJECT)       ; break ;
+        case 'btnRmvPerson'     : deleteRow(e, tables[3], TABLE_PERSON)        ; break ;
         default: break;
     }
 }
