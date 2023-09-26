@@ -12,6 +12,7 @@ class CourseForm(ModelForm):
         model = Curso
         fields = '__all__'
 
+
 class DisciplineForm(ModelForm):
     class Meta:
         model = Disciplina
@@ -41,3 +42,4 @@ class TechnologyForm(ModelForm):
     class Meta:
         model = Tecnologia
         fields = '__all__'
+

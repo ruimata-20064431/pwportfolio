@@ -121,3 +121,5 @@ class Competencia(models.Model):
 
     def __str__(self):
         return self.nome #f"{self.nome} - {str(tipocompetencia)}"
+
+

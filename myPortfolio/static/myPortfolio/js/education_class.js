@@ -21,9 +21,20 @@ const TEXT_FORMAT_SELECTED      = 'bold'                ;
 
 const TEXT_STYLE_NORMAL_CLASS   = 'unselected-line'     ;
 const TEXT_STYLE_SELECTED_CLASS = 'selected-line'       ;
+const ELEMENT_INVISIBLE_CLASS   = 'secret'              ;
 
 const TABLE_ROW_VISIBLE         = 'table-row'           ;
 const TABLE_ROW_INVISIBLE       = 'none'                ;
+
+const BTN_CREATE_CLASS          = 'btn_create'          ;
+const BTN_DELETE_CLASS          = 'btn_delete'          ;
+
+const FORM_COURSE               = 'courseForm'          ;
+const FORM_DISCIPLINE           = 'disciplineForm'      ;
+const FORM_PROJECT              = 'projectForm'         ;
+const FORM_PEOPLE               = 'peopleForm'          ;
+
+
 
 const NO_LINE_SELECTED          = -1                    ;
 const FIRST_ELEMENT             = 0                     ;
@@ -169,7 +180,7 @@ function detIndex(element){
     return -1
 }
 
-function clickLineEvent(e, title){
+function clickLineEvent(e){
     var currTable = currentTableIndx(e);                                        // determine in which of the tables the user clickes
     var filterSting = e.target.parentElement.children[0].innerHTML;             // the relevant columnt of clicked line
     var title = e.currentTarget.parentElement.parentElement.parentElement.
@@ -178,6 +189,44 @@ function clickLineEvent(e, title){
     currTable.markSelected(pos);
     cascadeFilter();                                                            // filter remainig
 }
+
+function enableDataForm(dataForm){
+    var frmCourse = document.getElementById(dataForm)
+    frmCourse.classList.remove(ELEMENT_INVISIBLE_CLASS);
+    frmCourse.scrollIntoView();
+}
+
+function disableDataForm(dataForm){
+    var frmCourse = document.getElementById(dataForm)
+    frmCourse.classList.add(ELEMENT_INVISIBLE_CLASS);
+}
+
+function deleteRow(e){
+    // get the filterString
+    console.log();
+}
+
+function buttonCreateEvent(e){
+    switch (e.target.id) {
+        case 'btnCrtCourse'     : enableDataForm(FORM_COURSE)       ; break ;
+        case 'btnCrtDiscipline' : enableDataForm(FORM_DISCIPLINE)   ; break ;
+        case 'btnCrtProject'    : enableDataForm(FORM_PROJECT)      ; break ;
+        case 'btnCrtPerson'     : enableDataForm(FORM_PEOPLE)       ; break ;
+        default: break;
+    }
+}
+
+function buttonDeleteEvent(e){
+    // get the reference attribute from the selected record
+    switch (e.target.id) {
+        case 'btnRmvCourse'     :   ; break ;
+        case 'btnRmvDiscipline' :   ; break ;
+        case 'btnRmvProject'    :   ; break ;
+        case 'btnRmvPerson'     :   ; break ;
+        default: break;
+    }
+}
+
 
 
 // --- listeners ---
@@ -198,8 +247,33 @@ document.addEventListener('DOMContentLoaded', function() {
         tables[i] = new DataContainer(title, data[0], i, FIRST_ELEMENT);        // array of table class objects
 
         data[0].addEventListener('click', (e) => {
-            clickLineEvent(e , title);    
+            clickLineEvent(e);    
         });
+
+        /*
+        Array.from(document.getElementsByClassName(BTN_CREATE_CLASS)).forEach(element => {
+            element.addEventListener('click', (e) => { buttonCreateEvent(e); },  false)
+        });
+        
+        Array.from(document.getElementsByClassName(BTN_DELETE_CLASS)).forEach(element => {
+            element.addEventListener('click', (e) => buttonDeleteEvent(e) )
+        });
+        */
+
+        
+        
+        var btnCreate = document.getElementsByClassName(BTN_CREATE_CLASS);
+        for (var j = 0; j < btnCreate.length; j++){
+            btnCreate[j].addEventListener('click', (e) => { buttonCreateEvent(e); })
+        }
+
+        var btnDelete = document.getElementsByClassName(BTN_DELETE_CLASS);
+        for (var j = 0; j < btnDelete.length; j++){
+            btnDelete[j].addEventListener('click', (e) => { buttonDeleteEvent(e); })
+        }
+       
+        cascadeFilter();
+
     }
 });
 

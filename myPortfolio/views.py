@@ -61,10 +61,25 @@ def consolidated_education_page_view(request):
     pessoas_table = PessoaTable(pessoas)
     pessoas_title = 'My Beloved Teachers'
 
-    record = CourseForm(request.POST or None)
-    if record.is_valid():
-        record.save()
-        
+    courseForm = CourseForm(request.POST or None)
+    if courseForm.is_valid():
+        courseForm.save()
+        courseForm = CourseForm()
+    
+    disciplineForm = DisciplineForm(request.POST or None)
+    if disciplineForm.is_valid():
+        disciplineForm.save()
+        disciplineForm = DisciplineForm()
+    
+    projectForm = ProjectForm(request.POST or None)
+    if projectForm.is_valid():
+        projectForm.save()
+        projectForm = ProjectForm()
+    
+    personForm = PersonForm(request.POST or None)
+    if personForm.is_valid():
+        personForm.save()
+        personForm = PersonForm()
 
     context = {
         'title': 'EDUCATION PAGE',
@@ -76,7 +91,14 @@ def consolidated_education_page_view(request):
         'projetos': projetos_table,
         'pessoas_title': pessoas_title,
         'pessoas': pessoas_table,
-        'form': record,
+        'courseForm': courseForm,
+        'courseFormTitle': 'COURSE',
+        'disciplineForm': disciplineForm,
+        'disciplineFormTitle': 'DISCIPLINE',
+        'projectForm': projectForm,
+        'projectFormTitle': 'PROJECT',
+        'personForm': personForm,
+        'personFormTitle': 'TEACHER',
     }
 
     return render(request, 'myPortfolio/education/education.html', context)
@@ -85,3 +107,4 @@ def consolidated_education_page_view(request):
 
 
 # --- utils --- 
+

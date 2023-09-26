@@ -15,22 +15,10 @@
                 {% render_table cursos %}
             </div>
             <div class="item-record-actions">
-                <button class="btn create">Criar Curso</button>
-                <button class="btn delete">Eliminar</button>
+                <button id="btnCrtCourse" class="btn btn_create">Criar Curso</button>
+                <button id="btnRmvCourse" class="btn btn_delete">Eliminar</button>
             </div>
         </div>
-        <!--
-            <div class="item-box secret">
-                <div class="form-input-container1">
-                    <h1>Enter a new {{ title }}</h1>
-                    <form method="POST" action="">
-                    {% csrf_token %}
-                    {{ form.as_p}}
-                    <input type="submit" valur="Save">
-                </form>
-                </div>
-            </div>
-        -->
         <div class="item-box">
             <div class="item-box-title">
                 <p class="item-box-title-text">{{ cadeiras_title }}</p>
@@ -40,8 +28,8 @@
             </div>
             
             <div class="item-record-actions">
-                <button class="btn create">Criar Cadeira</button>
-                <button class="btn delete">Eliminar</button>
+                <button id="btnCrtDiscipline" class="btn btn_create">Criar Cadeira</button>
+                <button id="btnRmvDiscipline" class="btn btn_delete">Eliminar</button>
             </div>
         </div>
         <div class="item-box">
@@ -53,8 +41,8 @@
             </div>
             
             <div class="item-record-actions">
-                <button class="btn create">Criar Projeto</button>
-                <button class="btn delete">Eliminar</button>
+                <button id="btnCrtProject" class="btn btn_create">Criar Projeto</button>
+                <button id="btnRmvProject" class="btn btn_delete">Eliminar</button>
             </div>
         </div>
         <div class="item-box">
@@ -66,8 +54,60 @@
             </div>
             
             <div class="item-record-actions">
-                <button class="btn create">Adicionar Professor</button>
-                <button class="btn delete">Eliminar</button>
+                <button id="btnCrtPerson" class="btn btn_create">Adicionar Professor</button>
+                <button id="btnRmvPerson" class="btn btn_delete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="courseForm" class="data-forms-box secret">
+        <div class="item-box">
+            <div class="form-input-container1">
+                <h1>Enter a new {{ courseFormTitle }}</h1>
+                <form method="POST" action="">
+                {% csrf_token %}
+                {{ courseForm.as_p}}
+                <input type="submit" valur="Save">
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="disciplineForm" class="data-forms-box secret">
+        <div class="item-box">
+            <div class="form-input-container1">
+                <h1>Enter a new {{ disciplineFormTitle }}</h1>
+                <form method="POST" action="">
+                {% csrf_token %}
+                {{ disciplineForm.as_p}}
+                <input type="submit" valur="Save">
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="projectForm" class="data-forms-box secret">
+        <div class="item-box">
+            <div class="form-input-container1">
+                <h1>Enter a new {{ projectFormTitle }}</h1>
+                <form method="POST" action="">
+                {% csrf_token %}
+                {{ projectForm.as_p}}
+                <input type="submit" valur="Save">
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="peopleForm" class="data-forms-box secret">
+        <div class="item-box">
+            <div class="form-input-container1">
+                <h1>Enter a new {{ personFormTitle }}</h1>
+                <form method="POST" action="">
+                {% csrf_token %}
+                {{ personForm.as_p}}
+                <input type="submit" valur="Save">
+            </form>
             </div>
         </div>
     </div>
