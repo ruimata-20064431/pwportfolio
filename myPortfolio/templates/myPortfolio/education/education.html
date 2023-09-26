@@ -19,16 +19,18 @@
                 <button class="btn delete">Eliminar</button>
             </div>
         </div>
-        <div class="item-box secret">
-            <div class="form-input-container1">
-                <h1>Enter a new {{ title }}</h1>
-                <form method="POST" action="">
-                {% csrf_token %}
-                {{ form.as_p}}
-                <input type="submit" valur="Save">
-            </form>
+        <!--
+            <div class="item-box secret">
+                <div class="form-input-container1">
+                    <h1>Enter a new {{ title }}</h1>
+                    <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <input type="submit" valur="Save">
+                </form>
+                </div>
             </div>
-        </div>
+        -->
         <div class="item-box">
             <div class="item-box-title">
                 <p class="item-box-title-text">{{ cadeiras_title }}</p>

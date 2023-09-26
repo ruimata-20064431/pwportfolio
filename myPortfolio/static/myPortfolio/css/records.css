@@ -618,6 +618,25 @@ label {
   color:gray;
 }
 
+.selected-line{
+  font-weight: bold;
+  background-color: #5E639E;
+  color: white;
+}
+
+.unselected-line{
+  font-weight: normal;
+  color: #5E639E
+}
+
+.visible-element{
+  display: table-row;
+}
+
+.invisible-element{
+  display: none;
+}
+
 
 /* inherited classes from django-tables2 */
 .table-container{
